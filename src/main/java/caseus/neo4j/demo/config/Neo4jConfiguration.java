@@ -5,9 +5,11 @@ import org.neo4j.ogm.session.SessionFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
 import org.springframework.data.neo4j.transaction.Neo4jTransactionManager;
 
 @Configuration
+@EnableNeo4jRepositories("caseus.neo4j.demo.repository")
 public class Neo4jConfiguration {
 
     @Value("${neo4j.uri}")
@@ -20,8 +22,7 @@ public class Neo4jConfiguration {
 
     @Bean
     public SessionFactory sessionFactory() {
-        return new SessionFactory(configuration(),
-                                  "caseus.neo4j.demo.entity");
+        return new SessionFactory(configuration(), "caseus.neo4j.demo.entity");
     }
 
     @Bean
