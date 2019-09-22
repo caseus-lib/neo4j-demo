@@ -1,7 +1,7 @@
 package caseus.neo4j.demo.entity;
 
 import org.neo4j.ogm.annotation.GeneratedValue;
-import org.springframework.data.annotation.Id;
+import org.neo4j.ogm.annotation.Id;
 import org.springframework.data.domain.Persistable;
 
 public class AbstractPersistable<ID> implements Persistable<ID> {
