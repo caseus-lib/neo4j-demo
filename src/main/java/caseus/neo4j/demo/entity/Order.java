@@ -9,9 +9,9 @@ import org.neo4j.ogm.annotation.typeconversion.DateString;
 import java.util.Date;
 import java.util.List;
 
-@NodeEntity
 @Getter
 @Setter
+@NodeEntity
 public class Order extends AbstractPersistable<Long> {
 
     @DateString("yy-MM-dd")

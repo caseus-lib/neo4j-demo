@@ -4,9 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 import org.neo4j.ogm.annotation.NodeEntity;
 
-@NodeEntity
 @Getter
 @Setter
+@NodeEntity
 public class Category extends AbstractPersistable<Long> {
 
     private String name;

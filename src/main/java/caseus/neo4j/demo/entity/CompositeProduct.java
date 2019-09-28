@@ -7,10 +7,10 @@ import org.neo4j.ogm.annotation.Relationship;
 
 import java.util.List;
 
-@NodeEntity
 @Getter
 @Setter
-public class CompositeProduct {
+@NodeEntity
+public class CompositeProduct extends Product {
 
     @Relationship(type = "CONTAINS")
     private List<Product> products;

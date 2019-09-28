@@ -6,9 +6,9 @@ import org.neo4j.ogm.annotation.EndNode;
 import org.neo4j.ogm.annotation.RelationshipEntity;
 import org.neo4j.ogm.annotation.StartNode;
 
-@RelationshipEntity(type = "INCLUDES")
 @Getter
 @Setter
+@RelationshipEntity(type = "INCLUDES")
 public class OrderDetails extends AbstractPersistable<Long> {
 
     private Long amount;
