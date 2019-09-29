@@ -12,6 +12,7 @@ import java.util.List;
 @NodeEntity
 public class CompositeProduct extends Product {
 
+    private String addition;
     @Relationship(type = "CONTAINS")
     private List<Product> products;
 

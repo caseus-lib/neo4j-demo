@@ -76,7 +76,6 @@ match (n:Shipper) remove n.shipperId
 match (n:Product) remove n.productId
 match (n:Order) remove n.orderId
 
-match (o:Order)
-where NOT(o.date="NULL")
-with apoc.date.parse(o.date, 'ms', 'yyyy-MM-dd HH:mm:ss.sssssssss') as d, o
-set o.date=apoc.date.format(d, 'ms', 'yyyy-MM-dd')
+MATCH (n:Customer) WHERE ID(n) = { id } WITH n
+RETURN n,[ [ (n)-[r_b1:BOUGHT]->(o1:Order) |
+         [ r_b1, o1, [ [ (o1)-[r_i2:INCLUDES]->(p2:Product) | [ r_i2, p2 ] ] ] ] ] ]

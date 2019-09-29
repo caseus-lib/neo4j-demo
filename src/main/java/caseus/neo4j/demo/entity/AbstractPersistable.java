@@ -1,5 +1,6 @@
 package caseus.neo4j.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.springframework.data.domain.Persistable;
@@ -15,10 +16,11 @@ public class AbstractPersistable<ID> implements Persistable<ID> {
         return id;
     }
 
-    protected void setId(ID id) {
+    public void setId(ID id) {
         this.id = id;
     }
 
+    @JsonIgnore
     @Override
     public boolean isNew() {
         return getId() == null;
