@@ -27,6 +27,10 @@
         </encoder>
     </appender>
 
+    <root level="error">
+        <appender-ref ref="Console"/>
+    </root>
+
     <logger name="org.neo4j.ogm" level="debug">
         <appender-ref ref="RollingFile"/>
     </logger>

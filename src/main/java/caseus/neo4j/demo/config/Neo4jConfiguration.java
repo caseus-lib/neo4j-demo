@@ -14,12 +14,18 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 public class Neo4jConfiguration {
 
-    @Value("${neo4j.uri:http://neo4j:northwind@localhost:7474}")
+    @Value("${neo4j.uri}")
     private String uri;
+    @Value("${neo4j.login}")
+    private String login;
+    @Value("${neo4j.password}")
+    private String password;
 
     @Bean
     public org.neo4j.ogm.config.Configuration configuration() {
-        return new Builder().uri(uri).credentials("neo4j", "123456").build();
+        return new Builder().uri(uri)
+                            .credentials(login, password)
+                            .build();
     }
 
     @Bean

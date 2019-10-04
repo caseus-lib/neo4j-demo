@@ -1,15 +1,13 @@
 package caseus.neo4j.demo.service;
 
-import caseus.neo4j.demo.entity.Category;
 import caseus.neo4j.demo.entity.CompositeProduct;
 import caseus.neo4j.demo.entity.Product;
 import caseus.neo4j.demo.repository.CompositeProductRepository;
 import caseus.neo4j.demo.repository.ProductRepository;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 @Lazy
@@ -24,33 +22,20 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> fetch(int year) {
-        return productRepository.findByYear(year);
-    }
-
-    @Transactional
-    @Override
-    public void changeCategory(Product product, Category category) {
-        product.setCategory(category);
-        productRepository.save(product);
-    }
-
-    @Override
     public Product fetch(Long id) {
-        return productRepository.findById(id).orElseThrow(RuntimeException::new);
-    }
-
-    @Transactional
-    @Override
-    public void changeProducts(CompositeProduct compositeProduct, List<Product> products) {
-        compositeProduct.setProducts(products);
-        productRepository.save(compositeProduct);
+        return productRepository.findById(id)
+                                .orElseThrow(NoSuchElementException::new);
     }
 
     @Override
     public CompositeProduct fetchComposite(Long id) {
         return compositeProductRepository.findById(id)
-                                         .orElseThrow(RuntimeException::new);
+                                         .orElseThrow(NoSuchElementException::new);
+    }
+
+    @Override
+    public CompositeProduct fetchAnyComposite() {
+        return compositeProductRepository.findAll().iterator().next();
     }
 
 }
