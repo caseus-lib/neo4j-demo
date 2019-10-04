@@ -75,7 +75,3 @@ match (n:Category) remove n.categoryId
 match (n:Shipper) remove n.shipperId
 match (n:Product) remove n.productId
 match (n:Order) remove n.orderId
-
-MATCH (n:Customer) WHERE ID(n) = { id } WITH n
-RETURN n,[ [ (n)-[r_b1:BOUGHT]->(o1:Order) |
-         [ r_b1, o1, [ [ (o1)-[r_i2:INCLUDES]->(p2:Product) | [ r_i2, p2 ] ] ] ] ] ]
